@@ -67,3 +67,44 @@
     @apply bg-background text-foreground;
   }
 }
+
+.rings-animation::before,
+.rings-animation::after {
+  content: "";
+  display: grid;
+  border-radius: 100%;
+  position: absolute;
+  outline: 15px solid hsl(var(--secondary));
+  height: 160px;
+  width: 160px;
+  animation: scalePulse 0.5s cubic-bezier(0.12, 0.84, 0.5, 0.44) both;
+}
+
+.rings-animation::after {
+  animation-delay: 0.2s;
+}
+
+.text-animation {
+  animation: fadeInUp 2s ease-out both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes scalePulse {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}
