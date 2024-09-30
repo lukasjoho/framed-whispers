@@ -21,6 +21,9 @@ const config = {
       fontSize: {
         "2xs": "0.625rem",
       },
+      boxShadow: {
+        frame: "10px 15px 20px rgba(0, 0, 0, 0.2)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

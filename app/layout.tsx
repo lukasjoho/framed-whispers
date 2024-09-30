@@ -1,15 +1,19 @@
+"use client";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { RouteChangeListener } from "./provider/router-change-listener";
 
+declare global {
+  interface Window {
+    amplitude: any;
+  }
+}
+
+// const inter = Inter({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Framed Whispers",
-  description: "Shop for art prints, posters, and more.",
-};
 
 export default function RootLayout({
   children,
@@ -17,13 +21,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={inter.className}>
+    <html lang="en">
+      <body className={`${inter.className}`}>
         <main className="flex min-h-screen flex-col justify-start">
-          {/* <Header /> */}
+          <RouteChangeListener />
+          <Header />
           {children}
         </main>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
